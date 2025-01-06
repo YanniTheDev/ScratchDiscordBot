@@ -1,7 +1,3 @@
-# Housekeeping libraries
-import os
-from dotenv import load_dotenv
-
 import discord
 from discord.ext import commands
 
@@ -10,8 +6,8 @@ bot = commands.Bot(command_prefix="/", intents=discord.Intents.all())
 
 # What to do when bot is ready
 @bot.event
-async def on_ready(self):
-    print(f"Ready as {self.user}...")
+async def on_ready():
+    print("Ready!")
 
 '''
 @param ctx: 
@@ -23,6 +19,7 @@ async def hello(ctx):
     await ctx.send("Hello!")
 
 # Environment variables
-bot_token = os.getenv("BOT_TOKEN")
+with open("token.txt") as token_file:
+    token = token_file.read()
 
-bot.run(bot_token)
+bot.run(token=token)
