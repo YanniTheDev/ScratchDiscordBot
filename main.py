@@ -8,7 +8,7 @@ from discord.ext import commands
 
 load_dotenv()
 
-class Client(discord.Client):
+class Client(commands.Bot):
     async def on_ready(self):
         print(f"Logged on as {self.user}")
 
@@ -20,7 +20,7 @@ class Client(discord.Client):
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = Client(intents=intents)
+client = Client(command_prefix="?", intents=intents)
 
 # Environment variables
 bot_token = os.getenv("BOT_TOKEN")
