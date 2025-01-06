@@ -16,7 +16,7 @@ such as who executed it, the server that was executed in, etc
 '''
 @bot.command()
 async def hello(ctx):
-    await ctx.send("Hello!")
+    await ctx.send(f"Hello {ctx.author.mention}!")
 
 # Environment variables
 with open("token.txt") as token_file:
