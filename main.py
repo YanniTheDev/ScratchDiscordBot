@@ -26,7 +26,7 @@ client = Client(command_prefix="?", intents=intents)
 async def say_hello(interaction: discord.Interaction):
     await interaction.response.send_message("Hi there!")
 
-@client.tree.command("print", description="Replies with a message")
+@client.tree.command(name="print", description="Replies with a message")
 async def print(interaction: discord.Interaction, message: str):
     await interaction.response.send_message(message)
 
