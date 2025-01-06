@@ -1,4 +1,9 @@
+import os
+
 import discord
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Client(discord.Client):
     async def on_ready(self):
@@ -11,4 +16,8 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = Client(intents=intents)
-client.run("MTMyNDYzMDg5ODA4NzU1OTIzOQ.GbsoGN.I1KdQqmDajnfLkjKHZJTaKO_UgtYREMjXkUa1M")
+
+# Environment variables
+bot_token = os.getenv("BOT_TOKEN")
+
+client.run(bot_token)
