@@ -1,7 +1,10 @@
+# Housekeeping libraries
 import os
+from dotenv import load_dotenv
 
 import discord
-from dotenv import load_dotenv
+from discord import app_commands
+from discord.ext import commands
 
 load_dotenv()
 
