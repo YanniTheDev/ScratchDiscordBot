@@ -22,6 +22,10 @@ intents.message_content = True
 
 client = Client(command_prefix="?", intents=intents)
 
+@client.tree.command(name="hi", description="Say hello!")
+async def say_hello(interaction: discord.Interaction):
+    await interaction.response.send_message("Hi there!")
+
 # Environment variables
 bot_token = os.getenv("BOT_TOKEN")
 
