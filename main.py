@@ -9,14 +9,15 @@ bot = commands.Bot(command_prefix="/", intents=discord.Intents.all())
 async def on_ready():
     print("Ready!")
 
-'''
-@param ctx: 
-ctx stands for context. It stores all the info about the command that was executed
-such as who executed it, the server that was executed in, etc
-'''
-@bot.command()
-async def hello(ctx):
-    await ctx.send(f"Hello {ctx.author.mention}!")
+    try:
+        synced_commands = await bot.tree.sync()
+        print(f"Synced {len(synced_commands)} commands")
+    except Exception as e:
+        print(f"An error occured: {e}")
+
+@bot.tree.command(name="hello", description="Greets you with a hello!")
+async def hello(interaction: discord.Interaction):
+    await interaction.response.send_message(f"Hello {interaction.user.mention}")
 
 # Environment variables
 with open("token.txt") as token_file:
